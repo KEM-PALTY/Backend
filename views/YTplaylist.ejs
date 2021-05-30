@@ -1,0 +1,17 @@
+<%- include("partials/header")%>
+
+<div class="ytbuttondiv">
+    <button class="btn btn-success btn-lg" onclick="myFunction()">Click to Update Playlist</button>
+</div>
+
+<script>
+    function myFunction(){
+        $.ajax({
+            type:"POST",
+            url:"https://kem-palty-admin-panel.herokuapp.com/updateyt",
+            error:"error"
+        })
+        //location.replace("/updateyt")
+    }
+</script>
+<%- include("partials/footer")%>

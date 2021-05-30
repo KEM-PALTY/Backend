@@ -1,0 +1,75 @@
+.blog_heading h1{
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bolder;
+    color: #343A40;
+}
+.blog_list_total_div{
+    width: 100%;
+    overflow-x: auto;
+}
+html{
+    overflow-x: hidden;
+}
+.updateblogtotaldiv label,input,textarea{
+    display: block;
+    width: 100% !important;
+}
+.updateblogtotaldiv{
+    padding: 50px;
+    width: 100%;
+}
+
+.updateblogtotaldiv>form>input, form>textarea{
+    margin-bottom: 10px;
+}
+.updateblogtotaldiv>form>input[type=submit]{
+    margin-top: 20px;
+}
+.deletebuttonupdateblog{
+    color: red;
+    background-color: transparent;
+    border: none;
+    float: right;
+}
+.divdeletetotal{
+    margin-bottom: 50px;
+}
+.create_blog_button{
+    float: right;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+.password_div_home{
+width: 480px;
+display: block;
+margin: auto;
+margin-top: 100px;
+}
+.password_div_home button{
+    display: block;
+    margin: auto;
+    font-weight: bold;
+}
+.password_div_home button i{
+    margin-right: 10px;
+}
+.home_heading_login{
+    font-size: 100px;
+    text-align: center;
+    font-weight: bolder;
+    margin-top: 220px;
+    color: grey;
+}
+.logoutbutton{
+    margin-left:20px ;
+}
+/* .ytbuttondiv button{
+    display: block;
+    margin: auto;
+} */
+.ytbuttondiv{
+    height: 90vh;
+    display: grid;
+    place-items: center;
+}

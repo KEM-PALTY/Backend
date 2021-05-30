@@ -1,0 +1,58 @@
+<%-include("partials/header")%>
+<div class="updateblogtotaldiv">
+    <form action="" class="editblogadminclass">
+        <label for="titleblog">Title :</label>
+        <input type="text" name="" value="" id="titleblog" required class="form-control">
+        <label for="contentblog">Content :</label>
+        <textarea name="" id="desc" required cols="30" rows="10"></textarea>
+        <label for="publishedonpubblog">Published On :</label>
+        <input type="date" name="" required value="" id="publishedonpubblog" class="form-control">
+        <label for="categoryblog">Category :</label>
+        <input type="text" name="" value="" id="categoryblog" class="form-control" required>
+        <label for="timeblog">Reading Time(Only mention Number) :</label>
+        <input type="number" name="" value="" id="timeblog" class="form-control" required>
+        <label for="coverphotoblog">Cover Photo URL :</label>
+        <input type="text" name="" value="" id="coverphotoblog" class="form-control" required>
+        <input type="submit" value="Publish" id="submitbuttonupdateblog" class="btn btn-success">
+    </form>
+</div>
+
+<script>
+    $(".editblogadminclass").on("submit",function(e){
+        e.preventDefault();
+    const title=$("#titleblog").val();
+    const desc=$("#desc").val();
+    const publishedonpubblog=$("#publishedonpubblog").val();
+    const categoryblog=$("#categoryblog").val();
+    const timeblog=$("#timeblog").val();
+    const coverphotoblog=$("#coverphotoblog").val();
+    createblogfunction(title,desc,publishedonpubblog,categoryblog,timeblog,coverphotoblog);
+    console.log(publishedonpubblog);
+})
+
+function createblogfunction(title,desc,publishedonpubblog,categoryblog,timeblog,coverphotoblog){
+    try{
+$.ajax({
+    type:"POST",
+    url:"https://kem-palty-admin-panel.herokuapp.com/api/blog",
+    data:{
+        title:title,
+        desc:desc,
+        publishedonpubblog: publishedonpubblog,
+        categoryblog:categoryblog,
+        timeblog:timeblog,
+        coverphotoblog:coverphotoblog
+    },
+    success:function(data){
+        location.replace("/")
+    } 
+})
+}
+catch(error){
+    console.log(error);
+}
+}
+</script>
+
+
+<%-include("partials/footer")%>

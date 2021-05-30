@@ -1,0 +1,48 @@
+<%-include("partials/header")%>
+
+<div class="blog_heading">
+    <h1>
+        Subscriber List
+    </h1>
+</div>
+
+<div class="blog_list_total_div">
+    <table class="table table-hover table-light">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">E-mail List</th>
+            
+          </tr>
+        </thead>
+        <tbody class="blog_list_tbody">
+          
+        </tbody>
+      </table>
+</div>
+
+<script>
+    var data;
+   fetchData();
+   function fetchData(){
+    $.ajax({
+        method:"GET",
+        url:"https://kem-palty-admin-panel.herokuapp.com/api/subscriber",
+        data:data,
+        success:function(data){
+            if(data.status){
+                for(let i=0;i<data.data.foundSubscriber.length;i++){
+                    var html=html+`<tr>
+            <th scope="row">${i+1}</th>
+            <td>${data.data.foundSubscriber[i].email_data}</td>
+          </tr>`;
+                }  
+                $(".blog_list_tbody").html(html);              
+            }
+        },
+        error:"error"
+    })
+   }
+</script>
+
+<%-include("partials/footer")%>

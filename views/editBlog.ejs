@@ -1,0 +1,78 @@
+<%-include("partials/header")%>
+<div class="updateblogtotaldiv">
+   <div class="divdeletetotal"><button class="deletebuttonupdateblog"><i class="fas fa-trash fa-2x"></i></i></button></div> 
+    <form action="" class="editblogadminclass">
+        <label for="titleblog">Title :</label>
+        <input type="text" name="" value="<%=data.title%>" id="titleblog" class="form-control" required>
+        <label for="contentblog">Content :</label>
+        <textarea name="" id="desc" cols="30" rows="10" required><%=data.content%></textarea>
+        <label for="publishedonpubblog">Published On :</label>
+        <input type="date" name="" value="<%=data.date.toLocaleDateString("fr-CA")%>" id="publishedonpubblog" class="form-control" required>
+        <label for="categoryblog">Category :</label>
+        <input type="text" name="" value="<%=data.category%>" id="categoryblog" class="form-control" required>
+        <label for="timeblog">Reading Time(Only mention Number) :</label>
+        <input type="number" name="" value="<%=data.readingtime%>" id="timeblog" class="form-control" required>
+        <label for="coverphotoblog">Cover Photo URL :</label>
+        <input type="text" name="" value="<%=data.coverphoto%>" id="coverphotoblog" class="form-control" required>
+        <input type="submit" value="Update" id="submitbuttonupdateblog" class="btn btn-success">
+    </form>
+</div>
+
+<script>
+$(".editblogadminclass").on("submit",function(e){
+    e.preventDefault();
+    const title=$("#titleblog").val();
+    const desc=$("#desc").val();
+    const publishedonpubblog=$("#publishedonpubblog").val();
+    const categoryblog=$("#categoryblog").val();
+    const timeblog=$("#timeblog").val();
+    const coverphotoblog=$("#coverphotoblog").val();
+    updateblogfunction(title,desc,publishedonpubblog,categoryblog,timeblog,coverphotoblog);
+    console.log(publishedonpubblog);
+})
+
+function updateblogfunction(title,desc,publishedonpubblog,categoryblog,timeblog,coverphotoblog){
+    try{
+$.ajax({
+    type:"PATCH",
+    url:"https://kem-palty-admin-panel.herokuapp.com/api/blog/<%=data._id%>",
+    data:{
+        title:title,
+        desc:desc,
+        publishedonpubblog: publishedonpubblog,
+        categoryblog:categoryblog,
+        timeblog:timeblog,
+        coverphotoblog:coverphotoblog
+    },
+    success:function(data){
+        location.replace("/");
+    }
+})
+
+}
+catch(error){
+    console.log(error);
+}
+}
+
+$(".deletebuttonupdateblog").on("click",function(e){
+    e.preventDefault();
+    const prompt_reply=confirm("Do You really want to delete ?");
+    console.log(prompt_reply);
+    if(prompt_reply==true){
+        console.log("delete");
+        $.ajax({
+            type:"DELETE",
+            url:"https://kem-palty-admin-panel.herokuapp.com/api/blog/delete/<%=data._id%>",
+            success:function(data){
+                location.replace("/");
+            }
+        })
+       
+    }
+})
+</script>
+
+
+
+<%-include("partials/footer")%>
